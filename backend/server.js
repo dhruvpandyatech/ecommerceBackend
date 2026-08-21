@@ -1,15 +1,29 @@
 import 'dotenv/config';
 import connectDb from "./src/config/db.js"
-import express from "express"
-const app = express();
+
+import app from './app.js';
+
 const PORT = process.env.PORT;
 
-const mongoUrl = process.env.mongoUrl;
-console.log(mongoUrl);
+connectDb().then(() => {
+    app.listen(PORT, () => {
+        console.log("server started");
+    })
+}).catch((err) => {
+    console.log(err);
+})
 
 
-connectDb().then(()=>{
-})
-app.listen(PORT,()=>{
-    console.log("server started");
-})
+// const start = async () => {
+//     try {
+
+//         await connectDb();
+//         app.listen(3000, () => {
+//             console.log("server is listening");
+//         })
+//     }
+//     catch (err) {
+//         console.log(err);
+//     }
+// }
+// start();

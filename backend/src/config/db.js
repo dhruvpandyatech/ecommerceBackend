@@ -1,5 +1,5 @@
-import mongoose, { mongo } from "mongoose"
-
+import mongoose from "mongoose"
+import "dotenv/config"
 import dns from "dns"
 dns.setServers([
     '1.1.1.1',
